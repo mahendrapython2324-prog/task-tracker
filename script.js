@@ -3,6 +3,7 @@ const taskForm = document.getElementById("task-form");
 const taskInput = document.getElementById("task-input");
 const taskList = document.getElementById("task-list");
 const taskCount = document.getElementById("task-count");
+const clearAllButton = document.getElementById("clear-all-button");
 const emptyMessage = document.getElementById("empty-message");
 
 let tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
@@ -82,4 +83,7 @@ taskForm.addEventListener("submit", event => {
     taskInput.focus();
 });
 
-renderTasks();
+clearAllButton.addEventListener("click", () => {
+    tasks = [];
+    renderTasks();
+});
