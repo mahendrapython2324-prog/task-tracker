@@ -5,7 +5,7 @@ const taskList = document.getElementById("task-list");
 const taskCount = document.getElementById("task-count");
 const emptyMessage = document.getElementById("empty-message");
 
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
 
 function updateTaskCount() {
     const remaining = tasks.filter(task => !task.completed).length;
@@ -15,6 +15,8 @@ function updateTaskCount() {
 
     emptyMessage.style.display =
         tasks.length === 0 ? "block" : "none";
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 function renderTasks() {
